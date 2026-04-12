@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../your-awesome-website"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
