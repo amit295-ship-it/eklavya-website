@@ -161,43 +161,40 @@
         </div>
 
         <div id="contact-form-anchor"></div>
-        <form id="eklavya-contact-form" class="contact-form-panel" novalidate>
-          <h3>Message us</h3>
-          <div class="form-row">
-            <label for="inq-name">Name</label>
-            <input id="inq-name" name="name" type="text" autocomplete="name" required maxlength="200" />
-          </div>
-          <div class="form-row">
-            <label for="inq-email">Email</label>
-            <input id="inq-email" name="email" type="email" autocomplete="email" required maxlength="320" />
-          </div>
-          <div class="form-row">
-            <label for="inq-phone">Phone (optional)</label>
-            <input id="inq-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
-          </div>
-          <div class="form-row">
-            <label for="inq-program">Program interest (optional)</label>
-            <select id="inq-program" name="program_interest">
-              <option value="">Select…</option>
-              <option value="general">General inquiry</option>
-              <option value="support_child">Support a Child Build a Dream</option>
-              <option value="samvaad">Samvaad se Safalta</option>
-              <option value="career">Love Your Career / Mould Your Career</option>
-              <option value="skilling">Skilling to Learn, Learn to Earn</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="inq-message">Message (optional)</label>
-            <textarea id="inq-message" name="message" maxlength="4000" placeholder="How can we help?"></textarea>
-          </div>
-          <button type="submit">Send message</button>
-          <div id="contact-form-status" class="form-status" role="status" aria-live="polite"></div>
-        </form>
-        <p class="form-alt">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVKL99KaLvfvmBCLkQSFN8hzpqRYDi-3hToa0x8B-fTsy3IQ/viewform" target="_blank" rel="noopener noreferrer">Prefer the Google Form?</a>
-        </p>
+        <div class="contact-form-panel" style="padding: 0; overflow: hidden; display: flex; justify-content: center; background: transparent; box-shadow: none;">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfVKL99KaLvfvmBCLkQSFN8hzpqRYDi-3hToa0x8B-fTsy3IQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">Loading…</iframe>
+        </div>
       </section>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container" class="chatbot-container">
+      <div id="chatbot-window" class="chatbot-window hidden">
+        <div class="chatbot-header">
+          <div class="chatbot-avatar-container">
+            <img src="/logo.jpg" alt="Sahyog Avatar" id="sahyog-avatar" class="chatbot-avatar idle">
+          </div>
+          <div class="chatbot-header-info">
+            <h3>Sahyog</h3>
+            <span class="chatbot-subtitle">Eklavya AI Assistant</span>
+          </div>
+          <button id="voice-toggle" class="voice-toggle-btn" aria-label="Toggle Voice" title="Enable Voice">🔈</button>
+          <button id="chatbot-close" class="chatbot-close-btn" aria-label="Close Chat">&times;</button>
+        </div>
+        <img src="/village_boy.png" alt="Indian Village Boy" id="village-boy-popup" class="village-boy-popup hidden">
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input-area">
+          <input type="text" id="chatbot-input" placeholder="Type your message..." autocomplete="off">
+          <button id="chatbot-send-btn" aria-label="Send Message">➤</button>
+        </div>
+      </div>
+      <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Open Chat">
+        <span class="chat-icon">💬</span>
+        <span class="chat-text-wrapper">
+          <span class="chat-text">Chat with Sahyog</span>
+          <span class="chat-sub-text">AI Powered Assistant</span>
+        </span>
+      </button>
     </div>
 
     <footer>

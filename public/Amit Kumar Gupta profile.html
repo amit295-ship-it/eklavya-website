@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Kumar Gupta - IT Strategy Consultant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.2" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .intro-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .intro-section .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .certifications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.05);
+        }
+
+        .education-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .education-item {
+            background: white;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #2ecc71;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .highlight-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .intro-section h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-section">
+                    <div class="profile-avatar">👨‍💼</div>
+                </div>
+                <div class="intro-section">
+                    <h1>Amit Kumar Gupta</h1>
+                    <p class="subtitle">IT Strategy Consultant & Digital Transformation Expert</p>
+                    <p class="subtitle" style="font-size: 1.1rem; color: #f39c12; font-weight: bold;">Founder, Eklavya Career Initiative | Microsoft Certified Trainer</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            📧 <a href="mailto:Amit295@gmail.com">Amit295@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            📱 <a href="tel:+917992348162">+91-7992348162</a>
+                        </div>
+                        <div class="contact-item">
+                            🌐 <a href="https://www.linkedin.com/in/amit-kumar-gupta-33464010/" target="_blank" rel="noopener">LinkedIn Profile</a>
+                        </div>
+                        <div class="contact-item">
+                            🌍 B1 Visa Holder
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p style="font-size: 1.2rem; text-align: center; max-width: 900px; margin: 0 auto; line-height: 1.8; color: #555;">
+                    <strong>18+ years</strong> of experience in IT consulting, enterprise solutioning, and digital transformation across diverse geographies including <strong>US, Europe, and APAC</strong>. Proven expertise in leading large-scale SAP transformations, strategic IT consulting, and CxO advisory services with onsite experience in US and Germany.
+                </p>
+                
+                <div class="highlight-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">18+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">SAP S/4 HANA Programs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$100M+</span>
+                        <span class="stat-label">Program Values Led</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">ERP Implementations</span>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 2rem; border-radius: 15px; margin: 2rem 0; text-align: center;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">🚀 SaaS Implementation Expertise</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>Zycus Source-to-Pay</h4>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>ServiceNow ITSM</h4>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>Salesforce CRM</h4>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>Workday HCM</h4>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>Microsoft Dynamics 365</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🏗️ Enterprise Solutioning</h3>
+                        <p>Digital Transformation, Business Architecture, Target Operating Models</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>⚙️ ERP Implementation</h3>
+                        <p>SAP S/4 HANA, SAP ECC, Oracle, Navision Migration</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🎯 Strategic Consulting</h3>
+                        <p>IT Portfolio Rationalization, Technology Roadmaps, CxO Advisory</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>💼 Sales Enablement</h3>
+                        <p>RFx Response Management, SaaS Pricing Models, Pre-Sales</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>🤖 Emerging Technologies</h3>
+                        <p>AI/ML, RPA Automation, Data Analytics, Cloud Migration</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>📊 Project Management</h3>
+                        <p>Agile, Prince2, Program Governance, Multi-location Teams</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">🎯 Current Philanthropic Leadership</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>👨‍🏫 Career Counselor & Mentor</h4>
+                            <p style="margin: 0.5rem 0; opacity: 0.9;">Eklavya Career Initiative - Founder</p>
+                            <p style="font-size: 0.9rem; opacity: 0.8;">Career Counselling, Mentoring, Coaching, Business Acumen - Philanthropy</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px;">
+                            <h4>🤝 Volunteer Education Initiatives</h4>
+                            <p style="margin: 0.5rem 0; opacity: 0.9;">Multiple Organizations</p>
+                            <p style="font-size: 0.9rem; opacity: 0.8;">Volunteer education delivery for the underprivileged</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Principal Consultant</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Zycus (Dec '24 - Present)</h4>
+                        <p>Leading strategic consulting initiatives for enterprise procurement transformation and S2P solutions.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Program Manager</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Zycus (Nov '22 - Mar '24)</h4>
+                        <p>Managed large-scale procurement transformation programs and SaaS implementation initiatives.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Lead Consultant</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Infosys (Oct '20 - Nov '22)</h4>
+                        <p>Led digital transformation initiatives and enterprise architecture consulting for global clients.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Manager</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">PwC (Feb '19 - Aug '20)</h4>
+                        <p>Delivered strategic IT consulting and business transformation advisory services.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Manager</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Ernst & Young (Dec '16 - Jan '19)</h4>
+                        <p>Managed technology implementation programs and client advisory engagements.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Senior Consultant</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Capgemini (Dec '13 - Nov '16)</h4>
+                        <p>Executed ERP implementations and business process reengineering projects.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">ERP Consultant</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Deloitte (Sep '12 - Nov '13)</h4>
+                        <p>Specialized in ERP implementations and enterprise system integrations for large-scale clients.</p>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <h3 style="color: #3498db; margin-bottom: 0.5rem;">Software Engineer - SAP GRC Functional</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Accenture (June '07 - Apr '10)</h4>
+                        <p>Started career focusing on SAP GRC functional modules and security implementations.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <h3 style="color: #2ecc71; margin-bottom: 0.5rem;">Master of Business Administration - Finance</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 0.5rem;">Great Lakes Institute of Management (2011-2012)</h4>
+                        <p style="color: #555;">CGPA: 3.33/4 | CAT 95.4 Percentile</p>
+                    </div>
+                    
+                    <div class="education-item">
+                        <h3 style="color: #2ecc71; margin-bottom: 0.5rem;">Bachelor of Technology</h3>
+                        <h4 style="color: #2c3e50; margin-bottom: 0.5rem;">NIT Bhopal (2003-2007)</h4>
+                        <p style="color: #555;">CGPA: 8.36/10</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Training & Guest Lecture Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                        <h3>🤖 AI & Machine Learning</h3>
+                        <p>Analytics, Visualization, Business Intelligence</p>
+                    </div>
+                    <div class="skill-category" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
+                        <h3>📈 Financial Literacy</h3>
+                        <p>Economy, Stock Markets, Investment Strategy</p>
+                    </div>
+                    <div class="skill-category" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                        <h3>🚀 Digital Transformation</h3>
+                        <p>Technology Platforms, Public Digital Infrastructure</p>
+                    </div>
+                    <div class="skill-category" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);">
+                        <h3>💼 Career Development</h3>
+                        <p>Career Counselling, Resume Building, Mock Interviews</p>
+                    </div>
+                    <div class="skill-category" style="background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);">
+                        <h3>📊 Project Management</h3>
+                        <p>Agile, SDLC, Advanced Excel, PowerPoint</p>
+                    </div>
+                    <div class="skill-category" style="background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);">
+                        <h3>📱 Digital Marketing</h3>
+                        <p>Social Media Marketing, Digital Strategy</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Training Programs & Workshops</h2>
+                <div style="margin: 2rem 0;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                        
+                        <div class="experience-card" style="border-left: 5px solid #3498db;">
+                            <h3 style="color: #3498db; margin-bottom: 1rem;">🚀 Microsoft Rise Program</h3>
+                            <ul style="color: #555; line-height: 1.8;">
+                                <li>Shiva School - Digital literacy training</li>
+                                <li>Bhopal Slums - Community outreach programs</li>
+                                <li>Anganwadis - Women empowerment through technology</li>
+                                <li>Government Schools & NGOs - Educational technology</li>
+                                <li>Pushpa School Astha - Student skill development</li>
+                                <li>Palan Sewa Foundation - Community service</li>
+                                <li>Sahara Society - Social impact programs</li>
+                            </ul>
+                        </div>
+
+                        <div class="experience-card" style="border-left: 5px solid #2ecc71;">
+                            <h3 style="color: #2ecc71; margin-bottom: 1rem;">🏫 Engineering Colleges</h3>
+                            <ul style="color: #555; line-height: 1.8;">
+                                <li>NIT Bhopal - AI/ML Sessions</li>
+                                <li>SISTECH Engineering College - Digital Literacy</li>
+                                <li>Oriental Engineering College - AI/ML & Digital Literacy</li>
+                                <li>RGUIT (Government Engineering) - AI/ML Sessions</li>
+                                <li>TIT Engineering College - Career Counselling</li>
+                                <li>IES University - Expert Lectures</li>
+                            </ul>
+                        </div>
+
+                        <div class="experience-card" style="border-left: 5px solid #e74c3c;">
+                            <h3 style="color: #e74c3c; margin-bottom: 1rem;">🎓 Universities & Colleges</h3>
+                            <ul style="color: #555; line-height: 1.8;">
+                                <li>VNS University - Digital Learning & Data Analytics</li>
+                                <li>Sage University - Digital Training</li>
+                                <li>LNCT MBA College - AI/ML Sessions</li>
+                                <li>Oriental MBA College - Career Counselling</li>
+                                <li>BSSS College - AI/ML, IoT & Digital Learning</li>
+                                <li>People University - Career Counselling</li>
+                                <li>AISECT University - Faculty Training Programs</li>
+                            </ul>
+                        </div>
+
+                        <div class="experience-card" style="border-left: 5px solid #f39c12;">
+                            <h3 style="color: #f39c12; margin-bottom: 1rem;">💼 Corporate & Professional</h3>
+                            <ul style="color: #555; line-height: 1.8;">
+                                <li>Infosys Springboard - Career Sessions</li>
+                                <li>CRISP (Indo-German Cooperation) - Excel Training</li>
+                                <li>Cybrom Technology Pvt Ltd - AI/ML Sessions</li>
+                                <li>Microsoft Certified Trainer Programs</li>
+                                <li>Advanced Excel Workshops</li>
+                                <li>Data Analytics Training</li>
+                            </ul>
+                        </div>
+
+                        <div class="experience-card" style="border-left: 5px solid #9b59b6;">
+                            <h3 style="color: #9b59b6; margin-bottom: 1rem;">🏆 Special Programs</h3>
+                            <ul style="color: #555; line-height: 1.8;">
+                                <li>Career pe Charcha - National Daily Coverage</li>
+                                <li>Teachers Training - Sharda Shishu Mandir</li>
+                                <li>Delhi Public School - Career Counselling</li>
+                                <li>Sant Hirdaram Girls College - Career Guidance</li>
+                                <li>Government UG Colleges - Multiple sessions</li>
+                                <li>Resume Building Workshops</li>
+                            </ul>
+                        </div>
+
+                        <div class="experience-card" style="border-left: 5px solid #1abc9c;">
+                            <h3 style="color: #1abc9c; margin-bottom: 1rem;">🏅 Awards & Recognition</h3>
+                            <ul style="color: #555; line-height: 1.8;">
+                                <li>CSR Award - Infosys Indore DC</li>
+                                <li>Appreciation Letters from Educational Institutions</li>
+                                <li>Microsoft Certified Trainer Recognition</li>
+                                <li>Community Service Awards</li>
+                                <li>Media Coverage for Educational Initiatives</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Latest Certifications</h2>
+                <div class="certifications-list">
+                    <div class="cert-item" style="background: linear-gradient(135deg, #0077b5 0%, #005885 100%);">🎯 Scrum.org: Understanding your career</div>
+                    <div class="cert-item" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);">🤖 Demystifying AI/ML: Sales: How to build a career in AI</div>
+                    <div class="cert-item" style="background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);">💰 Generative AI tools</div>
+                    <div class="cert-item" style="background: linear-gradient(135deg, #5352ed 0%, #3742fa 100%);">📈 AI Practitioner</div>
+                </div>
+                
+                <h3 style="color: #2c3e50; margin: 3rem 0 1.5rem 0; text-align: center; font-size: 1.8rem;">Professional Certifications</h3>
+                <div class="certifications-list">
+                    <div class="cert-item">🏆 TOGAF 9 Certified</div>
+                    <div class="cert-item">⚡ Prince2 Agile Practitioner & Foundation</div>
+                    <div class="cert-item">🤖 Be10x AI Tools Certification</div>
+                    <div class="cert-item">📋 ICI Practitioner (Icertis)</div>
+                    <div class="cert-item">📊 Wrike Analyze Silver</div>
+                    <div class="cert-item">🛡️ SAP Security and GRC</div>
+                    <div class="cert-item">🏦 NISM Capital Markets</div>
+                    <div class="cert-item">🌍 World Bank E-Procurement</div>
+                    <div class="cert-item">⚙️ DevOps Assessment Trained</div>
+                    <div class="cert-item">📈 Analytics Tools (R/SQL/Power BI/Qlik/Tableau)</div>
+                    <div class="cert-item">💼 Microsoft 365</div>
+                    <div class="cert-item">📊 Systems in Project Management</div>
+                    <div class="cert-item">🎓 e-procurement learning (CPP)</div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2 class="cta-title">Ready to Transform Your Business?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    With 18+ years of experience in digital transformation and strategic IT consulting, I help organizations navigate complex technology challenges and achieve sustainable growth.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://www.linkedin.com/in/amit-kumar-gupta-33464010/" class="cta-btn" target="_blank" rel="noopener">
+                        📧 Let's Connect
+                    </a>
+                    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2N5hxM9vJX5G6YYGb6ZQVA8K0ZqVr5yxL7M2rXsF8K5B9P3dQ6vRn2hT4wX1yG8kL5pQ2sF7nB4vX3&gv=amit295@gmail.com" class="cta-btn" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);" target="_blank" rel="noopener">
+                        📱 Schedule a Call
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Amit Kumar Gupta. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">
+                IT Strategy Consultant | Digital Transformation Expert | Guest Lecturer
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initially hide and animate experience cards
+            document.querySelectorAll('.experience-card, .skill-category, .cert-item').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(card);
+            });
+
+            // Add click animations to CTA buttons
+            document.querySelectorAll('.cta-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255,255,255,0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.width = '20px';
+                    ripple.style.height = '20px';
+                    ripple.style.marginLeft = '-10px';
+                    ripple.style.marginTop = '-10px';
+                    
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add number counting animation for stats
+            const animateNumbers = () => {
+                const statNumbers = document.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    const finalNumber = stat.textContent;
+                    if (finalNumber.includes('+')) {
+                        const number = parseInt(finalNumber.replace(/\D/g, ''));
+                        let current = 0;
+                        const increment = number / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= number) {
+                                stat.textContent = finalNumber;
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = Math.floor(current) + (finalNumber.includes('$') ? 'M+' : '+');
+                            }
+                        }, 30);
+                    }
+                });
+            };
+
+            // Trigger number animation when stats section is visible
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const statsSection = document.querySelector('.highlight-stats');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 import "./styles.css";
 import { isSupabaseConfigured, supabase } from "./supabase";
+import { initChatbot } from "./chatbot";
 
 function initScrollAnimations(): void {
   const observerOptions: IntersectionObserverInit = {
@@ -35,8 +36,6 @@ function initScrollAnimations(): void {
 }
 
 function initContactForm(): void {
-  const form = document.getElementById("eklavya-contact-form");
-  const statusEl = document.getElementById("contact-form-status");
   const scrollBtn = document.getElementById("scroll-to-contact");
 
   scrollBtn?.addEventListener("click", () => {
@@ -44,64 +43,11 @@ function initContactForm(): void {
       behavior: "smooth",
       block: "start",
     });
-    form?.querySelector<HTMLInputElement>("input[name='name']")?.focus();
-  });
-
-  if (!(form instanceof HTMLFormElement) || !statusEl) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "";
-    statusEl.className = "form-status";
-
-    if (!isSupabaseConfigured() || !supabase) {
-      statusEl.textContent =
-        "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to a .env file in the project root, then restart the dev server.";
-      statusEl.classList.add("error");
-      return;
-    }
-
-    const fd = new FormData(form);
-    const name = (fd.get("name") as string)?.trim();
-    const email = (fd.get("email") as string)?.trim();
-    const phone = (fd.get("phone") as string)?.trim() || null;
-    const programInterest =
-      (fd.get("program_interest") as string)?.trim() || null;
-    const message = (fd.get("message") as string)?.trim() || null;
-
-    if (!name || !email) {
-      statusEl.textContent = "Please enter your name and email.";
-      statusEl.classList.add("error");
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
-
-    const { error } = await supabase.from("eklavya_inquiries").insert({
-      name,
-      email,
-      phone,
-      program_interest: programInterest,
-      message,
-    });
-
-    if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
-
-    if (error) {
-      statusEl.textContent =
-        error.message || "Something went wrong. Please try again.";
-      statusEl.classList.add("error");
-      return;
-    }
-
-    statusEl.textContent = "Thank you! We will get back to you soon.";
-    statusEl.classList.add("success");
-    form.reset();
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initScrollAnimations();
   initContactForm();
+  initChatbot();
 });
