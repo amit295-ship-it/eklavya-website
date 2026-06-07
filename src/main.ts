@@ -1,6 +1,7 @@
 import "./styles.css";
 import { isSupabaseConfigured, supabase } from "./supabase";
 import { initChatbot } from "./chatbot";
+import { initVoiceCall } from "./voice-call";
 
 function initScrollAnimations(): void {
   const observerOptions: IntersectionObserverInit = {
@@ -46,8 +47,53 @@ function initContactForm(): void {
   });
 }
 
+function initLightbox(): void {
+  const lightbox = document.getElementById("media-lightbox");
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement | null;
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const closeBtn = document.getElementById("lightbox-close");
+
+  if (!lightbox || !lightboxImg || !lightboxCaption || !closeBtn) return;
+
+  const triggerElements = document.querySelectorAll(".zoomable-gallery-img");
+  triggerElements.forEach((el) => {
+    el.addEventListener("click", () => {
+      const img = el.querySelector("img") as HTMLImageElement | null;
+      const captionText = el.getAttribute("data-caption") || "";
+      if (img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = captionText;
+        lightbox.classList.remove("hidden");
+        // Disable body scroll when lightbox is open
+        document.body.style.overflow = "hidden";
+      }
+    });
+  });
+
+  const closeLightbox = () => {
+    lightbox.classList.add("hidden");
+    document.body.style.overflow = "";
+  };
+
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target === closeBtn) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
+      closeLightbox();
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initScrollAnimations();
   initContactForm();
+  initLightbox();
   initChatbot();
+  initVoiceCall();
 });
