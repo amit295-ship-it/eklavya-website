@@ -3,9 +3,13 @@ export default async function handler(req: any, res: any) {
     const lyzrApiKey = process.env.LYZR_API_KEY;
     const lyzrAgentId = process.env.LYZR_AGENT_ID;
 
+    // DEBUG OUTPUT
     if (!lyzrApiKey || !lyzrAgentId) {
       return res.status(500).json({
-        error: "LYZR_API_KEY or LYZR_AGENT_ID missing"
+        hasApiKey: !!lyzrApiKey,
+        hasAgentId: !!lyzrAgentId,
+        nodeEnv: process.env.NODE_ENV,
+        message: "Environment variable check"
       });
     }
 
