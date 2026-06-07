@@ -1621,3 +1621,9 @@
         font-size: 2.8rem;
     }
 }
+.video-player-container,
+.video-player-container iframe {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
