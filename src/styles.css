@@ -601,13 +601,14 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   transform-origin: bottom right;
 }
 
 .chatbot-window.hidden {
   opacity: 0;
   transform: scale(0.5);
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -939,11 +940,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .voice-call-overlay.hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
